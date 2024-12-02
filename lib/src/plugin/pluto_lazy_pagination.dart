@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:pluto_grid_plus/pluto_grid_plus.dart';
 
 /// Callback function to implement to add lazy pagination data.
-typedef PlutoLazyPaginationFetch = Future<PlutoLazyPaginationResponse> Function(
-    PlutoLazyPaginationRequest);
+typedef PlutoLazyPaginationFetch = Future<PlutoLazyPaginationResponse> Function(PlutoLazyPaginationRequest);
 
 /// Request data for lazy pagination processing.
 class PlutoLazyPaginationRequest {
@@ -158,8 +157,7 @@ class _PlutoLazyPaginationState extends State<PlutoLazyPagination> {
   }
 
   void _eventListener(PlutoGridEvent event) {
-    if (event is PlutoGridChangeColumnSortEvent ||
-        event is PlutoGridSetColumnFilterEvent) {
+    if (event is PlutoGridChangeColumnSortEvent || event is PlutoGridSetColumnFilterEvent) {
       setPage(1);
     }
   }
@@ -180,7 +178,7 @@ class _PlutoLazyPaginationState extends State<PlutoLazyPagination> {
       ),
     )
         .then((data) {
-      if(!mounted)return;
+      if (!mounted) return;
       stateManager.scroll.bodyRowsVertical!.jumpTo(0);
 
       stateManager.refRows.clearFromOriginal();
@@ -400,19 +398,15 @@ class _PaginationWidgetState extends State<_PaginationWidget> {
                     color: widget.iconColor,
                     disabledColor: widget.disabledIconColor,
                     splashRadius: _iconSplashRadius,
-                    mouseCursor: _isFirstPage
-                        ? SystemMouseCursors.basic
-                        : SystemMouseCursors.click,
+                    mouseCursor: _isFirstPage ? SystemMouseCursors.basic : SystemMouseCursors.click,
                   ),
                   IconButton(
                     onPressed: _isFirstPage ? null : _beforePage,
-                    icon: const Icon(Icons.navigate_before),
+                    icon: const Icon(Icons.cabin),
                     color: widget.iconColor,
                     disabledColor: widget.disabledIconColor,
                     splashRadius: _iconSplashRadius,
-                    mouseCursor: _isFirstPage
-                        ? SystemMouseCursors.basic
-                        : SystemMouseCursors.click,
+                    mouseCursor: _isFirstPage ? SystemMouseCursors.basic : SystemMouseCursors.click,
                   ),
                   ..._pageNumbers.map(_makeNumberButton),
                   IconButton(
@@ -421,9 +415,7 @@ class _PaginationWidgetState extends State<_PaginationWidget> {
                     color: widget.iconColor,
                     disabledColor: widget.disabledIconColor,
                     splashRadius: _iconSplashRadius,
-                    mouseCursor: _isLastPage
-                        ? SystemMouseCursors.basic
-                        : SystemMouseCursors.click,
+                    mouseCursor: _isLastPage ? SystemMouseCursors.basic : SystemMouseCursors.click,
                   ),
                   IconButton(
                     onPressed: _isLastPage ? null : _lastPage,
@@ -431,9 +423,7 @@ class _PaginationWidgetState extends State<_PaginationWidget> {
                     color: widget.iconColor,
                     disabledColor: widget.disabledIconColor,
                     splashRadius: _iconSplashRadius,
-                    mouseCursor: _isLastPage
-                        ? SystemMouseCursors.basic
-                        : SystemMouseCursors.click,
+                    mouseCursor: _isLastPage ? SystemMouseCursors.basic : SystemMouseCursors.click,
                   ),
                 ],
               ),

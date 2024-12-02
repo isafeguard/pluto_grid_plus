@@ -3,8 +3,7 @@ import 'package:pluto_grid_plus/pluto_grid_plus.dart';
 
 import 'ui.dart';
 
-class PlutoBaseCell extends StatelessWidget
-    implements PlutoVisibilityLayoutChild {
+class PlutoBaseCell extends StatelessWidget implements PlutoVisibilityLayoutChild {
   final PlutoCell cell;
 
   final PlutoColumn column;
@@ -46,6 +45,7 @@ class PlutoBaseCell extends StatelessWidget
   }
 
   void _handleOnTapUp(TapUpDetails details) {
+    print('ido: on tap up');
     _addGestureEvent(PlutoGridGestureType.onTapUp, details.globalPosition);
   }
 
@@ -98,9 +98,7 @@ class PlutoBaseCell extends StatelessWidget
   }
 
   void Function(TapDownDetails details)? _onSecondaryTapOrNull() {
-    return stateManager.onRowSecondaryTap == null
-        ? null
-        : _handleOnSecondaryTap;
+    return stateManager.onRowSecondaryTap == null ? null : _handleOnSecondaryTap;
   }
 
   @override
@@ -120,8 +118,7 @@ class PlutoBaseCell extends StatelessWidget
         rowIdx: rowIdx,
         row: row,
         column: column,
-        cellPadding: column.cellPadding ??
-            stateManager.configuration.style.defaultCellPadding,
+        cellPadding: column.cellPadding ?? stateManager.configuration.style.defaultCellPadding,
         stateManager: stateManager,
         child: _Cell(
           stateManager: stateManager,
@@ -195,8 +192,7 @@ class _CellContainerState extends PlutoStateWithChange<_CellContainer> {
           widget.column,
           widget.rowIdx,
         ),
-        isGroupedRowCell: stateManager.enabledRowGroups &&
-            stateManager.rowGroupDelegate!.isExpandableCell(widget.cell),
+        isGroupedRowCell: stateManager.enabledRowGroups && stateManager.rowGroupDelegate!.isExpandableCell(widget.cell),
         enableCellVerticalBorder: style.enableCellBorderVertical,
         borderColor: style.borderColor,
         activatedBorderColor: style.activatedBorderColor,

@@ -21,7 +21,7 @@ class PlutoGridCellGestureEvent extends PlutoGridEvent {
   void handler(PlutoGridStateManager stateManager) {
     switch (gestureType) {
       case PlutoGridGestureType.onTapUp:
-        _onTapUp(stateManager);
+        //_onTapUp(stateManager);
         break;
       case PlutoGridGestureType.onLongPressStart:
         _onLongPressStart(stateManager);
@@ -178,9 +178,11 @@ class PlutoGridCellGestureEvent extends PlutoGridEvent {
     PlutoCell? cell,
     int? rowIdx,
   ) {
-    if (stateManager.isCurrentCell(cell) != true) {
-      stateManager.setCurrentCell(cell, rowIdx, notify: false);
-    }
+    /// i don't want to use this method
+
+    // if (stateManager.isCurrentCell(cell) != true) {
+    //   stateManager.setCurrentCell(cell, rowIdx, notify: false);
+    // }
   }
 }
 
@@ -196,8 +198,7 @@ enum PlutoGridGestureType {
 
   bool get isOnLongPressStart => this == PlutoGridGestureType.onLongPressStart;
 
-  bool get isOnLongPressMoveUpdate =>
-      this == PlutoGridGestureType.onLongPressMoveUpdate;
+  bool get isOnLongPressMoveUpdate => this == PlutoGridGestureType.onLongPressMoveUpdate;
 
   bool get isOnLongPressEnd => this == PlutoGridGestureType.onLongPressEnd;
 
